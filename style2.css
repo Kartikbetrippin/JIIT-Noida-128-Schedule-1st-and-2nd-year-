@@ -74,6 +74,7 @@
 }
 .yeps{
     grid-column: span 2;
+    text-align: center;
 }
 #daydecider{
     height: 30px;

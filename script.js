@@ -6,11 +6,15 @@ var arrrr=[9,10,11,12,13,14,15,16];
 const daybut=document.querySelectorAll('#daySelector>button');
 
 window.onscroll=()=>{
+  document.getElementById('scroll').style.transform='translateY(-100px)';
   const element=document.getElementById('s128');
   const elementmenu=document.getElementById('menu');
   const noffset=-20+this.scrollY
   element.style.transform = "translateX("+noffset+"px)"; 
-  
+  //  var opac=this.scrollY/130;
+  //  opac=1-opac;
+
+  // element.style.opacity=opac;
   if(this.scrollY>10){
     const date=document.querySelector('#time>h1');
     date.style.transition='transform 0.5s ease, opacity 2s ease';
@@ -26,7 +30,14 @@ window.onscroll=()=>{
 
 
   }
-  console.log(this.scrollY);
+  // if(this.scrollY>130){
+  //   document.getElementById('s128').style.display='none';
+  // }
+  // if(this.scrollY<130){
+  //   document.getElementById('s128').style.display='block';
+  // }
+
+  
   
 };
 
@@ -85,6 +96,7 @@ function updateDay(){
   const minutes = today.getHours();
   const seconds = today.getMinutes();
   document.querySelector('#time>h1').innerText=days[dayOfWeek]+"\n"+minutes+":"+seconds;
+  var count=0;
   for(const item of arrrr){
     if(item<=minutes){
       // console.log("here are minutes "+minutes);
@@ -92,9 +104,14 @@ function updateDay(){
       // console.log(document.querySelector("."+"c"+item));
       document.querySelector("."+"c"+item).style.color='black';
       document.querySelector("."+"c"+item).style.backgroundColor='white';
+      count++;
+    }
+    if(minutes>16){
+      document.querySelector("."+"c"+item).style.color='white';
+      document.querySelector("."+"c"+item).style.backgroundColor='black';
     }
   };
-setTimeout(updateDay,1000);
+//setTimeout(updateDay,1000);
 }
 
 
@@ -208,12 +225,17 @@ function setter(str,slot){
     break;
     case 2:{
       document.getElementById('two').innerText=str;
-      
+     
     };
     break;
     case 3:{
       document.getElementById('three').innerText=str;
-     
+      if(finalday=="Saturday"){
+        if(/(\bLUNCH\b)/.test(str)){
+          document.getElementById('three').style.backgroundColor='green';
+        }
+      }
+      
     };
     break;
     case 4:{
@@ -254,12 +276,11 @@ function divclear(){
   document.getElementById('six').innerText='';
   document.getElementById('seven').innerText='';
   document.getElementById('eight').innerText='';
-document.getElementById('three').style.backgroundColor='black';
+  document.getElementById('three').style.backgroundColor='black';
   document.getElementById('four').style.backgroundColor='black';
   document.getElementById('five').style.backgroundColor='black';
   document.getElementById('six').style.backgroundColor='black';
   document.getElementById('seven').style.backgroundColor='black';
-
 }
 
 
