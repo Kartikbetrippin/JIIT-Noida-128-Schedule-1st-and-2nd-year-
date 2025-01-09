@@ -258,10 +258,11 @@ function divclear(){
   document.getElementById('six').innerText='';
   document.getElementById('seven').innerText='';
   document.getElementById('eight').innerText='';
-
+document.getElementById('three').style.backgroundColor='black';
   document.getElementById('four').style.backgroundColor='black';
   document.getElementById('five').style.backgroundColor='black';
   document.getElementById('six').style.backgroundColor='black';
+  document.getElementById('seven').style.backgroundColor='black';
 
 }
 
