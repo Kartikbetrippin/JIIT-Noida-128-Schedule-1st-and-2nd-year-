@@ -111,7 +111,7 @@ function updateDay(){
       document.querySelector("."+"c"+item).style.backgroundColor='black';
     }
   };
-//setTimeout(updateDay,1000);
+setTimeout(updateDay,1000);
 }
 
 
