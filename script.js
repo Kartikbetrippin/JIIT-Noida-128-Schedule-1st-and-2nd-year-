@@ -208,16 +208,12 @@ function setter(str,slot){
     break;
     case 2:{
       document.getElementById('two').innerText=str;
-      if(str.includes('LUNCH') && !str.includes('/')){
-        document.getElementById('two').style.backgroundColor='green';
-      }
+      
     };
     break;
     case 3:{
       document.getElementById('three').innerText=str;
-      if(str.includes('LUNCH') && !str.includes('-')){
-        document.getElementById('three').style.backgroundColor='green';
-      }
+     
     };
     break;
     case 4:{
