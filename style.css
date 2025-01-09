@@ -18,9 +18,10 @@ body{
     margin-bottom: 50px;
     display:flex;
     justify-content: center;
+    overflow: hidden;
 }
 #time{
-    padding:30px;
+    padding:0px;
     width: 98%;
     height: max-content;
     background: linear-gradient(90deg,white,black);

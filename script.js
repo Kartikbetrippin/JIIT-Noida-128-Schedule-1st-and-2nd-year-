@@ -26,6 +26,7 @@ window.onscroll=()=>{
 
 
   }
+  console.log(this.scrollY);
   
 };
 
