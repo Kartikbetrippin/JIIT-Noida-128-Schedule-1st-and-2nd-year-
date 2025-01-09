@@ -26,7 +26,6 @@ window.onscroll=()=>{
 
 
   }
-  console.log(this.scrollY);
   
 };
 
@@ -56,7 +55,7 @@ document.querySelectorAll("#buttonContainer>button").forEach((item)=>{
 item.addEventListener('click',()=>{
   document.querySelector("#batch").innerText=item.innerText;
   finalbatch=item.innerText;
-  document.getElementById('timeTable').style.transition='transform 0.1s ease';
+  document.getElementById('timeTable').style.transition='transform 1s ease';
   
   document.getElementById('timeTable').style.transform='translateX(0%)'
 
@@ -87,14 +86,14 @@ function updateDay(){
   document.querySelector('#time>h1').innerText=days[dayOfWeek]+"\n"+minutes+":"+seconds;
   for(const item of arrrr){
     if(item<=minutes){
-      console.log("here are minutes "+minutes);
-      console.log("here are items "+item);
-      console.log(document.querySelector("."+"c"+item));
+      // console.log("here are minutes "+minutes);
+      // console.log("here are items "+item);
+      // console.log(document.querySelector("."+"c"+item));
       document.querySelector("."+"c"+item).style.color='black';
       document.querySelector("."+"c"+item).style.backgroundColor='white';
     }
   };
-setTimeout(updateDay,60000);
+setTimeout(updateDay,1000);
 }
 
 
@@ -126,7 +125,6 @@ function mainconcept(day,batch){
 
   Object.entries(nine).forEach(item=>{
     if(item[0]==day){
-      console.log("nine")
     decifer(item[1], batch,1);
     }
   });
@@ -134,7 +132,7 @@ function mainconcept(day,batch){
 
   Object.entries(ten).forEach(item=>{
     if(item[0]==day){
-      console.log("ten")
+      
     decifer(item[1], batch,2);
     }
   });
@@ -142,38 +140,38 @@ function mainconcept(day,batch){
 
   Object.entries(elev).forEach(item=>{
     if(item[0]==day){
-      console.log("eleven")
+      
     decifer(item[1], batch,3);
     }
   });
 
   Object.entries(twe).forEach(item=>{
     if(item[0]==day){
-      console.log("twelve")
+   
     decifer(item[1], batch,4);
     }
   });
   Object.entries(oneo).forEach(item=>{
     if(item[0]==day){
-      console.log("one")
+      
     decifer(item[1], batch,5);
     }
   });
   Object.entries(twoo).forEach(item=>{
     if(item[0]==day){
-      console.log("two")
+     
     decifer(item[1], batch,6);
     }
   });
   Object.entries(three).forEach(item=>{
     if(item[0]==day){
-      console.log("two")
+     
     decifer(item[1], batch,7);
     }
   });
   Object.entries(fouro).forEach(item=>{
     if(item[0]==day){
-      console.log("two")
+  
     decifer(item[1], batch,8);
     }
   });
@@ -205,8 +203,6 @@ function setter(str,slot){
   switch(slot){
     case 1:{
       document.getElementById('one').innerText=str;
-      if(str.includes('LUNCH')){
-      }
     };
     break;
     case 2:{
@@ -236,6 +232,7 @@ function setter(str,slot){
         document.getElementById('five').style.backgroundColor='green';
       }
     };
+    break;
     case 6:{
       document.getElementById('six').innerText=str;
     };
@@ -260,8 +257,7 @@ function divclear(){
   document.getElementById('six').innerText='';
   document.getElementById('seven').innerText='';
   document.getElementById('eight').innerText='';
-  document.getElementById('two').style.backgroundColor='black';
-  document.getElementById('three').style.backgroundColor='black';
+
   document.getElementById('four').style.backgroundColor='black';
   document.getElementById('five').style.backgroundColor='black';
   document.getElementById('six').style.backgroundColor='black';
