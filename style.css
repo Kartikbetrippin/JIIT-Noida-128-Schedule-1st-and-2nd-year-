@@ -48,7 +48,7 @@ transition: transform 1s ease;
 }
 #buttonContainer>button{
     font-family: "Jersey 15", serif;
-    font-size: 1rem;
+    font-size: 1.3rem;
     background-color:black;
     color:white;
     border:1px solid white;
@@ -84,5 +84,6 @@ transition: transform 1s ease;
     padding:5px;
     border-radius: 5px;
     margin:2px;
-    width: 80px;
+    min-width: 100px;
+    font-size: 1.2rem;
 }

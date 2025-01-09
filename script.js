@@ -49,7 +49,7 @@ document.getElementById('daydecider').style.transform='translateY(-200%)';
 document.querySelector("#daySelector").style.display='none';
 document.getElementById('timeTable').style.transition='transform 2s ease';
   
-document.getElementById('timeTable').style.transform='translateX(-100%)';
+document.getElementById('timeTable').style.transform='translateX(-200%)';
 
 divclear();
 
@@ -128,7 +128,7 @@ daybut.forEach((item)=>{
     });
     finalday=item.innerText;
    item.innerText="->"+item.innerText;
-   item.style.width='150px';
+   item.style.width='200px';
     const daydecider=document.getElementById('daydecider');
     daydecider.innerText="schedule for  "+finalday;
     document.getElementById('daydecider').style.transform='translateY(0%)';
@@ -394,7 +394,7 @@ const nine = {
   Monday: [
     "PF13 (18B15GE111)/EDD/CADD03/RAHUL KUMAR",
     "PF2 (18B15GE111)/EDD/CADD03/SUMIT MAHAJAN (PRABHAKAR JHA)",
-    "PF4F5F6(15B17CI271)-CL1/VIKAS SHARMA/MUKESH/AKANSHA/SHAILESH/HIMANI/ADITI SHARMA",
+    "PF4F5F6(15B17CI271)-CL1/VIKAS SHARMA/MUKESH/ AKANSHA/SHAILESH/HIMANI/ADITI SHARMA",
     "PF1(15B17PH271)-41/PRASHANT CHAUHAN",
     "PF9(15B17PH271)-027A/VIKAS MALIK",
     "LF18F19(15B11PH211)-228/SUNEET KUMAR AWASTHI",
@@ -681,7 +681,7 @@ const twoo = {
       "PF9 (18B15GE111)/EDD/CADD03/PIYUSH SHARMA",
       "PE4 (18B15GE111)/EDD/CADD03/HARISH BISHWAKARMA (RAHUL KUMAR)",
       "LF11F12(24B11HS111)-118/HIMANSHU AGARWAL",
-      "PF1F2F3(15B17CI271)-CL1/ADITISHARMA/SHARIQ/HIMANI/SHIKHA MEHTA/PULKIT/SHRUTI GUPTA"
+      "PF1F2F3(15B17CI271)-CL1/ADITISHARMA/SHARIQ/HIMANI/ SHIKHA MEHTA/PULKIT/SHRUTI GUPTA"
   ],
   "Tuesday": [
       "TE4 (15B11PH211)-113/GFPHY",
@@ -695,7 +695,7 @@ const twoo = {
       "TF5(15B11CI211)-138/VIKAS SHARMA",
       "PF14 (18B15GE111)/EDD/CADD03/SUMIT MAHAJAN",
       "PF6 (18B15GE111)/EDD/CADD03/RAHUL KUMAR (HARISH BISHWAKARMA)",
-      "PF7F8F9(15B17CI271)-CL1/HIMANSHU/DEVPRIYA/SHIKHA MEHTA/SNIGDHA, NIVEDITA/SATYAPRAKASH/MUKESH",
+      "PF7F8F9(15B17CI271)-CL1/HIMANSHU/DEVPRIYA/SHIKHA MEHTA/ SNIGDHA, NIVEDITA/SATYAPRAKASH/MUKESH",
       "TF12(15B11MA211)-217/AMIT SRIVASTAVA"
   ],
   "Wednesday": [
@@ -704,7 +704,7 @@ const twoo = {
       "LF5F6(15B11CI211)-226/AYUSHI",
       "PF10(18B15GE111)/EDD/CADD03/SUMIT MAHAJAN",
       "PF8(24B16HS111)-240/PRAVEEN SHARMA",
-      "PF16F17F18F19(15B17CI271)-CL1/RASHMI/ARTIJAIN/SHRUTIGUPTA/NIVEDITA/SHAILESH",
+      "PF16F17F18F19(15B17CI271)-CL1/RASHMI/ARTIJAIN/SHRUTIGUPTA/ NIVEDITA/SHAILESH",
       "PE2(15B17PH271)-027A/ANUJ KUMAR",
       "PE4(15B17PH271)-41/AMIT VERMA",
       "TF4(15B11MA211)-121/KAMLESH KUMAR SHUKLA",
