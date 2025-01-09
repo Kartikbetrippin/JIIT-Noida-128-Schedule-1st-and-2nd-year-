@@ -44,6 +44,7 @@ window.onscroll=()=>{
 document.querySelector("#batch").addEventListener('click',(element)=>{
 const ele=document.querySelector("#buttonContainer");
 
+
 ele.classList.toggle('hidden');
 document.getElementById('daydecider').style.transform='translateY(-200%)';
 document.querySelector("#daySelector").style.display='none';
@@ -67,9 +68,7 @@ document.querySelectorAll("#buttonContainer>button").forEach((item)=>{
 item.addEventListener('click',()=>{
   document.querySelector("#batch").innerText=item.innerText;
   finalbatch=item.innerText;
-  document.getElementById('timeTable').style.transition='transform 1s ease';
   
-  document.getElementById('timeTable').style.transform='translateX(0%)'
 
 
   const ele=document.querySelector("#buttonContainer");
@@ -132,6 +131,9 @@ daybut.forEach((item)=>{
     const daydecider=document.getElementById('daydecider');
     daydecider.innerText="schedule for  "+finalday;
     document.getElementById('daydecider').style.transform='translateY(0%)';
+    document.getElementById('timeTable').style.transition='transform 0.5s ease';
+  
+  document.getElementById('timeTable').style.transform='translateX(0%)'
     divclear();
     mainconcept(finalday, finalbatch);
 
@@ -232,7 +234,8 @@ function setter(str,slot){
       document.getElementById('three').innerText=str;
       if(finalday=="Saturday"){
         if(/(\bLUNCH\b)/.test(str)){
-          document.getElementById('three').style.backgroundColor='green';
+          document.getElementById('three').style.background='green';
+          
         }
       }
       
@@ -241,14 +244,15 @@ function setter(str,slot){
     case 4:{
       document.getElementById('four').innerText=str;
       if(/(\bLUNCH\b)/.test(str)){
-        document.getElementById('four').style.backgroundColor='green';
+        document.getElementById('four').style.background='green';
+       
       }
     };
     break;
     case 5:{
       document.getElementById('five').innerText=str;
       if(/(\bLUNCH\b)/.test(str)){
-        document.getElementById('five').style.backgroundColor='green';
+        document.getElementById('five').style.background='green';
       }
     };
     break;
