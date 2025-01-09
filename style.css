@@ -1,0 +1,91 @@
+h1{
+    color:white;
+    font-family: "Jersey 15", serif;
+    margin-left: 50px;
+}
+div{
+    padding:0;
+    
+}
+body{
+    padding-top: 100px;
+    background-color: black;
+    height: fit-content;
+    margin: 0px;
+    overflow-x: hidden;
+}
+#topHeader{
+    margin-bottom: 50px;
+    display:flex;
+    justify-content: center;
+}
+#time{
+    padding:30px;
+    width: 98%;
+    height: max-content;
+    background: linear-gradient(90deg,white,black);
+    overflow:hidden;
+}
+#batch{ 
+    font-family: "Jersey 15", serif;
+    font-size: 2rem;
+    margin:20px 0 20px 10px;
+    transform: translateX(-200px);
+    color:white;
+    background-color: black;
+    border:1px solid white;
+    border-radius: 5px;
+    width:fit-content;
+}
+#buttonContainer>button{
+    font-family: "Jersey 15", serif;
+    font-size: 1rem;
+    background-color:black;
+    color:white;
+    border:1px solid white;
+    border-radius: 5px;
+    margin:5px;
+    width: 60px;
+
+}
+#buttonContainer{
+    margin-bottom: 0px;
+    
+    width: 100%;
+    margin-left:20px;
+}
+
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     height: 10vh;
+    width: 100%;
+    margin: 0;
+    background: linear-gradient(30deg,white,black,black);
+    color: black;
+    font-family: "Jersey 15", serif;
+    font-size: 1rem;
+}
+
+
+
+#daySelector{
+    display: none;
+    justify-content:center;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    flex-wrap: wrap;
+    
+}
+#daySelector>button{
+   background-color:black;
+    font-family: "Jersey 15", serif;
+    border:1px solid white;
+    color:white;
+    padding:5px;
+    border-radius: 5px;
+    margin:2px;
+    width: 80px;
+}
