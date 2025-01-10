@@ -260,8 +260,9 @@ function setter(str,slot){
           document.getElementById('three').style.background='green';
           
         }
-        document.getElementById('three').innerHTML=str;
+        
       }
+      document.getElementById('three').innerHTML=str;
       
     };
     break;
