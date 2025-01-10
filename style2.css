@@ -53,8 +53,9 @@
 .plannerdiv {
     font-family: "Funnel Sans", serif;
     display: flex;
+    
     flex-wrap: wrap;
-    align-items: center;
+    align-content: center;
     justify-content: center;
     background-color: black;
     color: white;
