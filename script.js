@@ -3,6 +3,7 @@ var finalbatch;
 var finalday;
 var classtype;
 var arrrr=[9,10,11,12,13,14,15,16];
+var subcodefinal;
 const daybut=document.querySelectorAll('#daySelector>button');
 
 window.onscroll=()=>{
@@ -210,62 +211,89 @@ function decifer(arr,batch,slot){
           
         }
         else{
-          setter(str,slot);
+           
+          callit(str,slot);
         }
       }
       else
-      setter(str,slot);
+      callit(str,slot);
     }
     
 })};
 
+function callit(str,slot){
+  var fi=str.indexOf("(");
+  var li=str.indexOf(")");
+  var code=str.substring(fi+1,li);
+  code=code.trim();
+  subcode[0].forEach((item,index)=>{
+    if(code==item){
+      // console.log(subcode[1][index]);
+      subcodefinal=subcode[1][index];
+    }
+  });
+  var firstpart=str.substring(0,fi);
+  var lastpart=str.substring(li+1);
+  // console.log("first part is"+firstpart);
+  // console.log("last part is"+lastpart);
+  subcodefinal="("+subcodefinal+")";
+  str="<span style=\"color:yellow\">"+firstpart+"</span>"+"<span style=\"color:#BAD8B6\">"+subcodefinal+"</span>"+lastpart;
+  setter(str,slot);
+}
+
 function setter(str,slot){
   switch(slot){
     case 1:{
-      document.getElementById('one').innerText=str;
+      document.getElementById('one').innerHTML=str;
     };
     break;
     case 2:{
-      document.getElementById('two').innerText=str;
+      document.getElementById('two').innerHTML=str;
      
     };
     break;
     case 3:{
-      document.getElementById('three').innerText=str;
+      
       if(finalday=="Saturday"){
         if(/(\bLUNCH\b)/.test(str)){
+          str=str.substring(str.lastIndexOf(">")+1);
           document.getElementById('three').style.background='green';
           
         }
+        document.getElementById('three').innerHTML=str;
       }
       
     };
     break;
     case 4:{
-      document.getElementById('four').innerText=str;
+      
       if(/(\bLUNCH\b)/.test(str)){
+        str=str.substring(str.lastIndexOf(">")+1);
         document.getElementById('four').style.background='green';
        
       }
+      document.getElementById('four').innerHTML=str;
     };
     break;
     case 5:{
-      document.getElementById('five').innerText=str;
+      
       if(/(\bLUNCH\b)/.test(str)){
+        str=str.substring(str.lastIndexOf(">")+1);
         document.getElementById('five').style.background='green';
       }
+      document.getElementById('five').innerHTML=str;
     };
     break;
     case 6:{
-      document.getElementById('six').innerText=str;
+      document.getElementById('six').innerHTML=str;
     };
     break;
     case 7:{
-      document.getElementById('seven').innerText=str;
+      document.getElementById('seven').innerHTML=str;
     }
     break;
     case 8:{
-      document.getElementById('eight').innerText=str;
+      document.getElementById('eight').innerHTML=str;
 
     };
     break;
@@ -286,6 +314,36 @@ function divclear(){
   document.getElementById('six').style.backgroundColor='black';
   document.getElementById('seven').style.backgroundColor='black';
 }
+
+const subcode = [
+  [
+      "15B11EC111",
+      "15B11PH211",
+      "15B11MA211",
+      "18B15GE111",
+      "15B11CI211",
+      "15B17PH271",
+      "15B17EC171",
+      "15B17CI271",
+      "24B11HS111",
+      "24B16HS111"
+  ],
+  [
+      "Electrical I",
+      "Phy II",
+      "Maths II",
+      "EDD",
+      "SDF II",
+      "PhyLab II",
+      "ElectricalLab I",
+      "SDFLab II",
+      "UHV",
+      "LifeSkills"
+  ]
+];
+
+
+
 
 
 

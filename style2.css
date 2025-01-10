@@ -20,7 +20,7 @@
     opacity: 0;
     margin:10px;
     color:black;
-    font-family: "Funnel Sans", serif;
+    font-family: "Jersey 15", serif;
     font-size: 3rem;
 }
 .hidden{
@@ -53,6 +53,7 @@
 .plannerdiv {
     font-family: "Funnel Sans", serif;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     background-color: black;
@@ -81,7 +82,7 @@
     text-align: center;
 }
 #daydecider{
-    height: 30px;
+    height: fit-content;
     transform: translateY(-100%);
     transition: transform 0.5s ease;
 }
