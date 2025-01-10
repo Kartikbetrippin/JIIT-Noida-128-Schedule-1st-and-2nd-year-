@@ -146,23 +146,21 @@ function mainconcept(day,batch){
 
   Object.entries(nine).forEach(item=>{
     if(item[0]==day){
-    decifer(item[1], batch,1);
+      decifer(item[1], batch,1);
     }
   });
 
 
   Object.entries(ten).forEach(item=>{
     if(item[0]==day){
-      
-    decifer(item[1], batch,2);
+      decifer(item[1], batch,2);
     }
   });
 
 
   Object.entries(elev).forEach(item=>{
     if(item[0]==day){
-      
-    decifer(item[1], batch,3);
+      decifer(item[1], batch,3);
     }
   });
 
@@ -239,6 +237,7 @@ function callit(str,slot){
   subcodefinal="("+subcodefinal+")";
   str="<span style=\"color:yellow\">"+firstpart+"</span>"+"<span style=\"color:#BAD8B6\">"+subcodefinal+"</span>"+lastpart;
   setter(str,slot);
+  
 }
 
 function setter(str,slot){
@@ -258,11 +257,11 @@ function setter(str,slot){
         if(/(\bLUNCH\b)/.test(str)){
           str=str.substring(str.lastIndexOf(">")+1);
           document.getElementById('three').style.background='green';
-          
         }
         
       }
       document.getElementById('three').innerHTML=str;
+      
       
     };
     break;
@@ -315,143 +314,6 @@ function divclear(){
   document.getElementById('six').style.backgroundColor='black';
   document.getElementById('seven').style.backgroundColor='black';
 }
-
-const subcode = [
-  [
-      "15B11EC111",
-      "15B11PH211",
-      "15B11MA211",
-      "18B15GE111",
-      "15B11CI211",
-      "15B17PH271",
-      "15B17EC171",
-      "15B17CI271",
-      "24B11HS111",
-      "24B16HS111"
-  ],
-  [
-      "Electrical I",
-      "Phy II",
-      "Maths II",
-      "EDD",
-      "SDF II",
-      "PhyLab II",
-      "ElectricalLab I",
-      "SDFLab II",
-      "UHV",
-      "LifeSkills"
-  ]
-];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const subcode = [
   [
@@ -885,7 +747,6 @@ const fouro = {
     ],
     "Saturday": []
 };
-
 
 
 
