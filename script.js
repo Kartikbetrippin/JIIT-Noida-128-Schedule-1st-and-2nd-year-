@@ -7,6 +7,7 @@ var semSelect;
 var finalelec;
 var check = 0;
 const daybut = document.querySelectorAll("#daySelector>button");
+ 
 
 async function toggleShrinkWithDelay(elementId, delay, yep) {
   return new Promise((resolve) => {
@@ -14,7 +15,6 @@ async function toggleShrinkWithDelay(elementId, delay, yep) {
   }).then(() => {
     document.getElementById(elementId).classList.remove("shrink");
     document.getElementById(yep).classList.remove("up");
-    // console.log("done");
   });
 }
 
@@ -24,98 +24,123 @@ window.onscroll = () => {
   const elementmenu = document.getElementById("menu");
   const noffset = -20 + this.scrollY;
   element.style.transform = "translateX(" + noffset + "px)";
-  //  var opac=this.scrollY/130;
-  //  opac=1-opac;
-
-  // element.style.opacity=opac;
   if (this.scrollY > 10) {
     const date = document.querySelector("#time>h1");
     date.style.transition = "transform 0.5s ease, opacity 2s ease";
     date.style.transform = "translateY(0px)";
     date.style.opacity = "1";
   }
-  if (this.scrollY > 20) {
-  }
-  // if(this.scrollY>130){
-  //   document.getElementById('s128').style.display='none';
-  // }
-  // if(this.scrollY<130){
-  //   document.getElementById('s128').style.display='block';
-  // }
 };
 
-document.querySelectorAll("#flexsem>h2").forEach((item) => {
-  item.addEventListener("click", () => {
-    if (check != 1) {
-      const batchele = document.querySelector("#batch");
-      batchele.style.transition = "transform 0.5s ease, opacity 2s ease";
-      batchele.style.transform = "translateX(0px)";
-      batchele.style.opacity = "1";
-      check = 1;
-    }
 
-    document.getElementById("timeTable").style.transform = "translateX(-200%)";
-    document.getElementById("daydecider").style.transform = "translateY(-200%)";
-    document.querySelector("#daySelector").style.display = "none";
-    document.querySelector("#buttonContainer").classList.add("hidden");
-    document.querySelector("#batch").innerText = "Select Batch";
-    document.getElementById("electivePicker").style.display = "none";
 
-    if (item.id == "s2") {
-   
+
+function displayBatchButtonAtTheFirstTime() {
+  if (check != 1) {
+    const batchele = document.querySelector("#batch");
+    batchele.style.transition = "transform 0.5s ease, opacity 2s ease";
+    batchele.style.transform = "translateX(0px)";
+    batchele.style.opacity = "1";
+    check = 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+function defaultConditionsAfterPressingSem() {
+  document.getElementById("timeTable").style.transform = "translateX(-200%)";
+  document.getElementById("daydecider").style.transform = "translateY(-200%)";
+  document.getElementById("daySelector").style.display = "none";
+  document.getElementById("electivePicker").style.display = "none";
+  document.getElementById("buttonContainer").classList.add("hidden");
+  document.getElementById("buttonContainerS").classList.add("hidden");
+  document.getElementById("batch").innerText = "Select Batch";
+}
+
+
+
+
+
+
+
+function semAnimatorMain(s,ball){
+  document.getElementById(ball).classList.remove("drop");
+  document.getElementById(s).classList.remove("grow");
+  document.getElementById(ball).classList.add("up");
+  document.getElementById(s).classList.add("shrink");
+  document.getElementById(s).style.color = "white";
+  toggleShrinkWithDelay(s , 600, ball);
+}
+
+
+
+
+
+
+
+
+
+function SemAnimation(item) {
+  switch(item.id) {
+
+
+
+    case 's2':{
+      if (document.getElementById("s4").classList[0] == "grow") {
+        semAnimatorMain('s4','rightball');
+      }
+
+      semSelect = 2;
       item.style.color = "black";
       const text = document.getElementById("s2");
-
-      if (document.getElementById("s4").classList[0] == "grow") {
-        document.getElementById("rightball").classList.remove("drop");
-        document.getElementById("s4").classList.remove("grow");
-        document.getElementById("rightball").classList.add("up");
-        document.getElementById("s4").classList.add("shrink");
-        document.getElementById("s4").style.color = "white";
-        toggleShrinkWithDelay("s4", 600, "rightball");
-      }
-
       document.getElementById("leftball").classList.add("drop");
       text.classList.add("grow");
-      semSelect = 2;
-    } else {
-      
-      item.style.color = "black";
+    }
+
+    break;
+
+
+    case 's4':{
       if (document.getElementById("s2").classList[0] == "grow") {
-        document.getElementById("leftball").classList.remove("drop");
-        document.getElementById("s2").classList.remove("grow");
-        document.getElementById("leftball").classList.add("up");
-        document.getElementById("s2").classList.add("shrink");
-        document.getElementById("s2").style.color = "white";
-        toggleShrinkWithDelay("s2", 600, "leftball");
+        semAnimatorMain('s2','leftball');
       }
+
+      semSelect = 4;
+      item.style.color = "black";
       const text = document.getElementById("s4");
       document.getElementById("rightball").classList.add("drop");
       text.classList.add("grow");
-      semSelect = 4;
     }
+  
+  }
+}
+
+
+
+
+document.querySelectorAll("#flexsem>h2").forEach((item) => {
+  item.addEventListener("click", () => {
+    displayBatchButtonAtTheFirstTime();
+    defaultConditionsAfterPressingSem();
+    SemAnimation(item);
   });
 });
 
-document.querySelector("#batch").addEventListener("click", (element) => {
-  const ele = document.querySelector("#buttonContainer");
-  const ele2 = document.getElementById("buttonContainerS");
+
+
+function defaulteBatchClick(){
   document.getElementById("batch").innerText = "Select Batch";
-
-  if (semSelect == 2) {
-    ele.classList.toggle("hidden");
-  } else {
-    
-    ele2.classList.toggle("hidden");
-  }
-
   document.getElementById("electivePicker").style.display = "none";
   document.getElementById("daydecider").style.transform = "translateY(-200%)";
   document.querySelector("#daySelector").style.display = "none";
   document.getElementById("timeTable").style.transition = "transform 2s ease";
-
   document.getElementById("timeTable").style.transform = "translateX(-200%)";
-
   divclear();
 
   daybut.forEach((itemm) => {
@@ -124,46 +149,76 @@ document.querySelector("#batch").addEventListener("click", (element) => {
       itemm.style.width = "80px";
     }
   });
+}
+
+
+
+document.querySelector("#batch").addEventListener("click", (element) => {
+  const ele = document.querySelector("#buttonContainer");
+  const ele2 = document.getElementById("buttonContainerS");
+  
+switch(semSelect){
+
+  case 2:{
+    ele.classList.toggle("hidden");
+  } 
+  break;
+  case 4:{
+    ele2.classList.toggle("hidden");
+  }
+}
+
+defaulteBatchClick();
 });
+
+
+
 
 document.querySelectorAll("#buttonContainerS>button").forEach((item) => {
   item.addEventListener("click", () => {
+
+
     document.getElementById("batch").innerText = item.id;
     finalbatch = item.id;
     document.getElementById("buttonContainerS").classList.toggle("hidden");
+    document.getElementById("electivePicker").style.display = "flex";
 
-    showelecmenu();
   });
 });
-
-function showelecmenu() {
-  document.getElementById("electivePicker").style.display = "flex";
-}
-
 document.querySelectorAll("#electivePicker>button").forEach((item) => {
   item.addEventListener("click", () => {
     finalelec = item.id;
-    console.log(finalelec);
-    document.getElementById("batch").innerText =
-      document.getElementById("batch").innerText + "->" + item.innerText;
-    skipToDay();
+    // console.log(finalelec);
+    document.getElementById("batch").innerText =document.getElementById("batch").innerText + "->" + item.innerText;
+    document.getElementById("electivePicker").style.display = "none";
+    DayMenu();
   });
 });
+
 
 document.querySelectorAll("#buttonContainer>button").forEach((item) => {
   item.addEventListener("click", () => {
     document.querySelector("#batch").innerText = item.innerText;
     finalbatch = item.innerText;
-
     const ele = document.querySelector("#buttonContainer");
     ele.classList.add("hidden");
 
-    skipToDay();
+    DayMenu();
   });
 });
 
-function skipToDay() {
-  document.getElementById("electivePicker").style.display = "none";
+
+
+
+
+
+
+
+
+
+
+function DayMenu() {
+  
   const today = new Date();
   const dayOfWeek = today.getDay();
   const days = [
@@ -178,14 +233,19 @@ function skipToDay() {
   const theday = days[dayOfWeek].charAt(0) + days[dayOfWeek].charAt(1);
 
   document.getElementById("daySelector").style.display = "flex";
-  console.log(theday);
-  console.log(dayOfWeek);
+  // console.log(theday);
+  // console.log(dayOfWeek);
   if (dayOfWeek != 0) {
     const daybutt = document.getElementById(theday);
-    console.log(daybutt);
+    // console.log(daybutt);
     daybutt.innerText = "->" + daybutt.innerText;
   }
 }
+
+
+
+
+
 
 updateDay();
 function updateDay() {
@@ -202,15 +262,12 @@ function updateDay() {
   ];
   const minutes = today.getHours();
   const seconds = today.getMinutes();
-  console.log();
+  // console.log();
   document.querySelector("#time>h1").innerText =
     days[dayOfWeek] + "\n" + minutes + ":" + seconds;
   var count = 0;
   for (const item of arrrr) {
     if (item <= minutes) {
-      // console.log("here are minutes "+minutes);
-      // console.log("here are items "+item);
-      // console.log(document.querySelector("."+"c"+item));
       document.querySelector("." + "c" + item).style.color = "black";
       document.querySelector("." + "c" + item).style.backgroundColor = "white";
       count++;
@@ -223,24 +280,37 @@ function updateDay() {
   setTimeout(updateDay, 1000);
 }
 
+
+
+
+
 daybut.forEach((item) => {
   item.addEventListener("click", () => {
+
+
     daybut.forEach((itemm) => {
       if (itemm.innerText[0] == "-") {
         itemm.innerText = itemm.innerText.substring(2);
         itemm.style.width = "80px";
       }
     });
+
+
     finalday = item.innerText;
     item.innerText = "->" + item.innerText;
     item.style.width = "200px";
+
+
+
     const daydecider = document.getElementById("daydecider");
     daydecider.innerText = "schedule for  " + finalday;
-    document.getElementById("daydecider").style.transform = "translateY(0%)";
-    document.getElementById("timeTable").style.transition =
-      "transform 0.5s ease";
 
+
+    document.getElementById("daydecider").style.transform = "translateY(0%)";
+    document.getElementById("timeTable").style.transition ="transform 0.5s ease";
     document.getElementById("timeTable").style.transform = "translateX(0%)";
+
+
     divclear();
 
     mainconcept(finalday, finalbatch);
@@ -249,103 +319,40 @@ daybut.forEach((item) => {
 
 function mainconcept(day, batch) {
   switch (semSelect) {
-    case 2:
-      {
-        Object.entries(nine).forEach((item) => {
-          if (item[0] == day) {
-            decifer(item[1], batch, 1);
+    case 2:{
+      semesterI.forEach((item,index)=>{
+        Object.entries(item).forEach(entry=>{
+          if(entry[0]==day){
+            // console.log(`here is the item ${entry[1]} here is the batch ${batch} here is the itemNum ${index+1}`);
+            decifer(entry[1],batch,index+1);
           }
-        });
+        })
+      });
 
-        Object.entries(ten).forEach((item) => {
-          if (item[0] == day) {
-            decifer(item[1], batch, 2);
-          }
-        });
 
-        Object.entries(elev).forEach((item) => {
-          if (item[0] == day) {
-            decifer(item[1], batch, 3);
-          }
-        });
-
-        Object.entries(twe).forEach((item) => {
-          if (item[0] == day) {
-            decifer(item[1], batch, 4);
-          }
-        });
-        Object.entries(oneo).forEach((item) => {
-          if (item[0] == day) {
-            decifer(item[1], batch, 5);
-          }
-        });
-        Object.entries(twoo).forEach((item) => {
-          if (item[0] == day) {
-            decifer(item[1], batch, 6);
-          }
-        });
-        Object.entries(three).forEach((item) => {
-          if (item[0] == day) {
-            decifer(item[1], batch, 7);
-          }
-        });
-        Object.entries(fouro).forEach((item) => {
-          if (item[0] == day) {
-            decifer(item[1], batch, 8);
-          }
-        });
       }
       break;
     case 4: {
-      Object.entries(fournine).forEach((item) => {
-        if (item[0] == day) {
-          decifer4(item[1], batch, 1);
-        }
+      semesterII.forEach((item,index)=>{
+        Object.entries(item).forEach(entry=>{
+          if(entry[0]==day){
+            // console.log(`here is the item ${entry[1]} here is the batch ${batch} here is the itemNum ${index+1}`);
+            decifer4(entry[1],batch,index+1);
+          }
+        })
       });
 
-      Object.entries(fourten).forEach((item) => {
-        if (item[0] == day) {
-          decifer4(item[1], batch, 2);
-        }
-      });
-
-      Object.entries(foureleven).forEach((item) => {
-        if (item[0] == day) {
-          decifer4(item[1], batch, 3);
-        }
-      });
-
-      Object.entries(fourtwelve).forEach((item) => {
-        if (item[0] == day) {
-          decifer4(item[1], batch, 4);
-        }
-      });
-      Object.entries(fourone).forEach((item) => {
-        if (item[0] == day) {
-          decifer4(item[1], batch, 5);
-        }
-      });
-      Object.entries(fourtwo).forEach((item) => {
-        if (item[0] == day) {
-          decifer4(item[1], batch, 6);
-        }
-      });
-      Object.entries(fourthree).forEach((item) => {
-        if (item[0] == day) {
-          decifer4(item[1], batch, 7);
-        }
-      });
-      Object.entries(fourfour).forEach((item) => {
-        if (item[0] == day) {
-          decifer4(item[1], batch, 8);
-        }
-      });
     }
   }
 }
+
+
+
+
+
 function decifer4(todecode, batch, slot) {
   todecode.forEach((str) => {
-    str=str.trim();
+    str = str.trim();
     // console.log(str);
 
     if (str.substring(1, 4) == "ALL") {
@@ -376,10 +383,9 @@ function decifer4(todecode, batch, slot) {
         } else {
           callit(str, slot);
         }
-      }
-      else if(str[0]=='T'){
-        if(str.includes(finalelec)){
-          callit(str,slot);
+      } else if (str[0] == "T") {
+        if (str.includes(finalelec)) {
+          callit(str, slot);
         }
       } else {
         callit(str, slot);
@@ -402,6 +408,11 @@ function decifer(arr, batch, slot) {
     }
   });
 }
+
+
+
+
+
 
 function callit(str, slot) {
   var fi = str.indexOf("(");
@@ -503,6 +514,9 @@ function divclear() {
   document.getElementById("six").style.backgroundColor = "black";
   document.getElementById("seven").style.backgroundColor = "black";
 }
+
+
+
 
 // const subcode = [
 //   [
@@ -669,7 +683,6 @@ const nine = {
     "TF1(15B11CI211)-121/VARTIKA",
   ],
 };
-
 const ten = {
   Monday: [
     "LF16F17(15B11MA211)-226/PANKAJ KUMAR SRIVASTAVA",
@@ -727,7 +740,6 @@ const ten = {
     "TF18(15B11MA211)-138/AMIT SRIVASTAVA",
   ],
 };
-
 const elev = {
   Monday: [
     "TF1(24B11HS111)--121/DEEPAK VERMA",
@@ -786,7 +798,6 @@ const elev = {
     "TF3(15B11PH211)-113/SUNEET KUMAR AWASTHI",
   ],
 };
-
 const twe = {
   Monday: [
     "F1F2F3F4F5F6F7F8F9F10F11F12 LUNCH",
@@ -831,7 +842,6 @@ const twe = {
     "TF9(15B11PH211)-DW04/AMIT VERMA",
   ],
 };
-
 const oneo = {
   Monday: [
     "F13F14F16F17F18F19E1E2E3E4 LUNCH",
@@ -877,7 +887,6 @@ const oneo = {
   ],
   Saturday: [],
 };
-
 const twoo = {
   Monday: [
     "LE1E2(15B11MA211)-111/P. RANA",
@@ -979,7 +988,6 @@ const three = {
   ],
   Saturday: [],
 };
-
 const fouro = {
   Monday: [
     "TF1(15B11PH211)-228/NARENDRA KHATRI",
@@ -995,6 +1003,8 @@ const fouro = {
   Friday: ["LF16F17(15B11CI211)-148/ASHISH"],
   Saturday: [],
 };
+const semesterI=[nine,ten,elev,twe,oneo,twoo,three,fouro];
+
 
 const fournine = {
   Monday: [
@@ -1038,7 +1048,6 @@ const fournine = {
     "PF1 (18B15EC212) - 142/JITENDRA MOHAN/AJIT KUMAR",
   ],
 };
-
 const fourten = {
   Monday: [
     "TF10 (15B11MA301) - 111/UMME ZAINAB",
@@ -1203,7 +1212,6 @@ const fourone = {
   Saturday: [],
   Sunday: [],
 };
-
 const fourtwo = {
   Monday: [
     "LE15E16 (15B11EC413) - 148/SAJAI VIR SINGH",
@@ -1246,7 +1254,6 @@ const fourtwo = {
   ],
   Saturday: [],
 };
-
 const fourthree = {
   Monday: [
     "PE16 (24B45EC212) - 142/ANKUR GUPTA",
@@ -1293,7 +1300,6 @@ const fourthree = {
   ],
   Saturday: [],
 };
-
 const fourfour = {
   Monday: [],
   Tuesday: [
@@ -1308,3 +1314,4 @@ const fourfour = {
   Friday: ["LF9F10 (18B11EC213) - 244B/ATUL KUMAR"],
   Saturday: [],
 };
+const semesterII=[fournine,fourten,foureleven,fourtwelve,fourone,fourtwo,fourthree,fourfour];
